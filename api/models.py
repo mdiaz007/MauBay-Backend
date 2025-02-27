@@ -17,6 +17,7 @@ class active(models.Model):
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
     description = models.TextField(max_length=200, null=False, blank=False)
+    quantity = models.IntegerField(null=False, blank=False)
 
     # Should be an ImageField!
     image_url = models.TextField(max_length=200, null=False, blank=False)
@@ -43,6 +44,7 @@ class sold(models.Model):
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
     description = models.TextField(max_length=200, null=False, blank=False)
+    quantity = models.IntegerField(null=False, blank=False)
 
     # Should be an ImageField!
     image_url = models.TextField(max_length=200, null=False, blank=False)
@@ -71,6 +73,7 @@ class draft(models.Model):
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
     description = models.TextField(max_length=200, null=False, blank=False)
+    quantity = models.IntegerField(null=False, blank=False)
 
     # Should be an ImageField!
     image_url = models.TextField(max_length=200, null=False, blank=False)
