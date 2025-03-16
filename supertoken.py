@@ -1,5 +1,6 @@
 from supertokens_python import init, InputAppInfo, SupertokensConfig
-from supertokens_python.recipe import emailpassword, session
+from supertokens_python.recipe import emailpassword, session, dashboard
+from supertokens_python.recipe.emailpassword import InputFormField
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -23,8 +24,13 @@ init(
     ),
     framework='django',
     recipe_list=[
+        dashboard.init(),
 	    session.init(), # initializes session features
-        emailpassword.init()
+        emailpassword.init(
+            sign_up_feature=emailpassword.InputSignUpFeature(
+                form_fields=[InputFormField(id='firstname'), InputFormField(id='lastname'), InputFormField(id='accountID'), InputFormField(id='username')]
+            )
+        )
     ],
     mode='asgi' # use wsgi if you are running django server in sync mode
 )
