@@ -1,5 +1,5 @@
 # from django.contrib.auth.models import Group, User
-from .models import active, deleted, draft, sold
+from .models import active, deleted, draft, sold, maubay_users
 from rest_framework import serializers
 
 # Public
@@ -33,3 +33,10 @@ class SoldListingSerializer(serializers.ModelSerializer):
         model = sold
         fields = '__all__'
         # fields = ['id', 'user_id', 'title', 'price', 'post_date', 'description', 'quanitity', 'image_url', 'category', 'condition', 'sell_price', 'sold_date', 'listing_type']
+
+# Private
+# Serializer for the user accounts.
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = maubay_users
+        fields = '__all__'

@@ -12,7 +12,7 @@ class active(models.Model):
         verbose_name_plural = "active"
 
     id = models.BigAutoField(primary_key=True)
-    user_id = models.CharField(max_length=50, null=False, blank=False)
+    user_id = models.CharField(max_length=100, null=False, blank=False)
     title = models.TextField(max_length=50, null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
@@ -39,7 +39,7 @@ class sold(models.Model):
         verbose_name_plural = "sold"
 
     id = models.BigAutoField(primary_key=True)
-    user_id = models.CharField(max_length=50, null=False, blank=False)
+    user_id = models.CharField(max_length=100, null=False, blank=False)
     title = models.TextField(max_length=50, null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
@@ -68,7 +68,7 @@ class draft(models.Model):
         verbose_name_plural = "draft"
 
     id = models.BigAutoField(primary_key=True)
-    user_id = models.CharField(max_length=50, null=False, blank=False)
+    user_id = models.CharField(max_length=100, null=False, blank=False)
     title = models.TextField(max_length=50, null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
@@ -94,7 +94,7 @@ class deleted(models.Model):
         verbose_name_plural = "deleted"
 
     id = models.BigAutoField(primary_key=True)
-    user_id = models.CharField(max_length=50, null=False, blank=False)
+    user_id = models.CharField(max_length=100, null=False, blank=False)
     title = models.TextField(max_length=50, null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     post_date = models.DateField(auto_now=True)
@@ -111,5 +111,22 @@ class deleted(models.Model):
 
     def __str__(self):
         return f"{self.id} | {self.user_id} | {self.title}"
+
+class maubay_users(models.Model):
+    
+    # Universal
+    # Removes plurality to name of model.
+    class Meta:
+        verbose_name_plural = "maubay_users"
+
+    user_id = models.CharField(max_length=100, null=False, blank=False, primary_key=True)
+    firstname = models.CharField(max_length=50, null=False, blank=False)
+    lastname = models.CharField(max_length=50, null=False, blank=False)
+    username = models.CharField(max_length=50, null=False, blank=False)
+    account_created = models.DateField(auto_now=True)
+    seller = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user_id} | {self.username} | {self.seller}"
 
     
