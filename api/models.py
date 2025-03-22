@@ -125,7 +125,6 @@ class maubay_users(models.Model):
     username = models.CharField(max_length=50, null=False, blank=False)
     email = models.CharField(max_length=100, null=False, blank=False)
     account_created = models.DateField(auto_now=True)
-    seller = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.user_id} | {self.username} | {self.seller}"   
+        return f"{self.user_id} | {self.email} | {self.username}"
