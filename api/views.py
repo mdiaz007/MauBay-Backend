@@ -34,5 +34,5 @@ def getDraftListings(request):
 
 @sync_to_async
 def signUp(user_id, firstname, lastname, username, email):
-    test = maubay_users(user_id=user_id, firstname=firstname, lastname=lastname, username=username, email=email)
-    test.save()
+    user = maubay_users(user_id=user_id, firstname=firstname, lastname=lastname, username=username, email=email)
+    user.save()
