@@ -34,22 +34,6 @@ def getDraftListings(request):
 
 @api_view(['POST'])
 def createListing(request):
-    print(request.data['title'])
-    # id = models.BigAutoField(primary_key=True)
-    # user_id = models.CharField(max_length=100, null=False, blank=False)
-    # title = models.TextField(max_length=50, null=False, blank=False)
-    # price = models.IntegerField(null=False, blank=False)
-    # post_date = models.DateField(auto_now=True)
-    # description = models.TextField(max_length=200, null=False, blank=False)
-    # quantity = models.IntegerField(null=False, blank=False)
-
-    # # Should be an ImageField!
-    # image_url = models.TextField(max_length=200, null=False, blank=False)
-
-    # category = models.CharField(max_length=50, null=False, blank=False, choices=[("Cars", "Cars"),("Jewelry", "Jewelry"),("Clothing", "Clothing")])
-    # condition = models.CharField(max_length=50, null=False, blank=False, choices=[("New", "New"),("Used", "Used")])
-
-    # listing_type = models.CharField(max_length=10, default="Active", editable=False, null=False)
     listing = active(user_id=request.data['userID'], title=request.data['title'], image_url=request.data['image'], price=request.data['price'], description=request.data['description'], category=request.data['category'], condition=request.data['condition'])
     listing.save()
     return Response({"Message": "Listing Created!"})
