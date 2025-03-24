@@ -29,7 +29,8 @@ def getSoldListings(request):
 
 @api_view(['GET'])
 def getDraftListings(request):
-    drafted = draft.objects.all()
+    user_id = request.GET.get('id')
+    drafted = draft.objects.filter(user_id=user_id)
     serializer = DraftListingSerializer(drafted, many=True)
     return Response(serializer.data)
 
@@ -44,6 +45,7 @@ def createDraft(request):
     listing = draft(user_id=request.data['userID'], title=request.data['title'], image_url=request.data['image'], price=request.data['price'], description=request.data['description'], category=request.data['category'], condition=request.data['condition'])
     listing.save()
     return Response({"Message": "Draft Created!"})
+
 
 ### USER LOGIN OPTIONS
 
