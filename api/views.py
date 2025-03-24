@@ -6,6 +6,7 @@ from .serializers import DeletedListingSerializer
 from .serializers import SoldListingSerializer
 from .serializers import DraftListingSerializer
 from asgiref.sync import sync_to_async
+import os
 
 # GET Requests
 @api_view(['GET'])
@@ -34,7 +35,9 @@ def getDraftListings(request):
 
 @api_view(['POST'])
 def createListing(request):
+    print(request.data)
     listing = active(user_id=request.data['userID'], title=request.data['title'], image_url=request.data['image'], price=request.data['price'], description=request.data['description'], category=request.data['category'], condition=request.data['condition'])
+    # print(request.data)
     listing.save()
     return Response({"Message": "Listing Created!"})
 
