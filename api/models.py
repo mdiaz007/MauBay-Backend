@@ -19,7 +19,7 @@ class active(models.Model):
     description = models.TextField(max_length=200, null=False, blank=False)
 
     # Should be an ImageField!
-    image_url = models.ImageField(null=False, blank=False)
+    image_url = models.ImageField(null=False, blank=False, upload_to="active")
 
     category = models.CharField(max_length=50, null=False, blank=False, choices=[("Cars", "Cars"),("Jewelry", "Jewelry"),("Clothing", "Clothing")])
     condition = models.CharField(max_length=50, null=False, blank=False, choices=[("New", "New"),("Used", "Used")])
@@ -43,7 +43,7 @@ class sold(models.Model):
     description = models.TextField(max_length=200, null=False, blank=False)
 
     # Should be an ImageField!
-    image_url = models.ImageField(null=False, blank=False, upload_to="holder/")
+    image_url = models.ImageField(null=False, blank=False, upload_to="sold")
 
     category = models.CharField(max_length=50, null=False, blank=False, choices=[("Cars", "Cars"),("Jewelry", "Jewelry"),("Clothing", "Clothing")])
     condition = models.CharField(max_length=50, null=False, blank=False, choices=[("New", "New"),("Used", "Used")])
@@ -66,7 +66,7 @@ class draft(models.Model):
     description = models.TextField(max_length=200, null=False, blank=False)
 
     # Should be an ImageField!
-    image_url = models.ImageField(null=False, blank=False, upload_to="holder/")
+    image_url = models.ImageField(null=False, blank=False, upload_to="draft")
 
     category = models.CharField(max_length=50, null=False, blank=False, choices=[("Cars", "Cars"),("Jewelry", "Jewelry"),("Clothing", "Clothing")])
     condition = models.CharField(max_length=50, null=False, blank=False, choices=[("New", "New"),("Used", "Used")])
@@ -89,7 +89,7 @@ class deleted(models.Model):
     description = models.TextField(max_length=200, null=False, blank=False)
 
     # Should be an ImageField!
-    image_url = models.ImageField(null=False, blank=False, upload_to="holder/")
+    image_url = models.ImageField(null=False, blank=False, upload_to="deleted")
 
     category = models.CharField(max_length=50, null=False, blank=False, choices=[("Cars", "Cars"),("Jewelry", "Jewelry"),("Clothing", "Clothing")])
     condition = models.CharField(max_length=50, null=False, blank=False, choices=[("New", "New"),("Used", "Used")])

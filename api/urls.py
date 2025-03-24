@@ -10,7 +10,7 @@ urlpatterns = [
     path('api/sold/', views.getSoldListings),
     path('api/draft/', views.getDraftListings),
     path('api/listing/add', views.createListing),
-    # path('api/listing/draft', views.createListing),
-    # path('api/listing/delete', views.createListing),
-    # path('api/listing/sold', views.createListing)
+    path('api/listing/draft', views.createDraft),
+    # path('api/listing/delete', views.deleteListing),
+    # path('api/listing/sold', views.soldListing)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

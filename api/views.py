@@ -35,12 +35,15 @@ def getDraftListings(request):
 
 @api_view(['POST'])
 def createListing(request):
-    print(request.data)
     listing = active(user_id=request.data['userID'], title=request.data['title'], image_url=request.data['image'], price=request.data['price'], description=request.data['description'], category=request.data['category'], condition=request.data['condition'])
-    # print(request.data)
     listing.save()
     return Response({"Message": "Listing Created!"})
 
+@api_view(['POST'])
+def createDraft(request):
+    listing = draft(user_id=request.data['userID'], title=request.data['title'], image_url=request.data['image'], price=request.data['price'], description=request.data['description'], category=request.data['category'], condition=request.data['condition'])
+    listing.save()
+    return Response({"Message": "Draft Created!"})
 
 ### USER LOGIN OPTIONS
 
