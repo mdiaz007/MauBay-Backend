@@ -8,7 +8,7 @@ from .serializers import DraftListingSerializer
 from asgiref.sync import sync_to_async
 import os
 
-# GET Requests
+# General
 @api_view(['GET'])
 def getActiveListings(request):
     actives = active.objects.all()
@@ -16,24 +16,35 @@ def getActiveListings(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getDeletedListings(request):
-    delete = deleted.objects.all()
-    serializer = DeletedListingSerializer(delete, many=True)
+def getSoldListings(request):
+    solds = sold.objects.all()
+    serializer = SoldListingSerializer(solds, many=True)
+    print(serializer)
+    return Response(serializer.data)
+
+# Dashboard
+@api_view(['GET'])
+def getUserActive(request):
+    user_id = request.GET.get('id')
+    actives = active.objects.filter(user_id=user_id)
+    serializer = ActiveListingSerializer(actives, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getSoldListings(request):
-    solds = sold.objects.all()
+def getUserSold(request):
+    user_id = request.GET.get('id')
+    solds = sold.objects.filter(user_id=user_id)
     serializer = SoldListingSerializer(solds, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getDraftListings(request):
+def getUserDraft(request):
     user_id = request.GET.get('id')
     drafted = draft.objects.filter(user_id=user_id)
     serializer = DraftListingSerializer(drafted, many=True)
     return Response(serializer.data)
 
+# Listing 
 @api_view(['POST'])
 def createListing(request):
     listing = active(user_id=request.data['userID'], title=request.data['title'], image_url=request.data['image'], price=request.data['price'], description=request.data['description'], category=request.data['category'], condition=request.data['condition'])
@@ -47,8 +58,7 @@ def createDraft(request):
     return Response({"Message": "Draft Created!"})
 
 
-### USER LOGIN OPTIONS
-
+# User Login Options
 @sync_to_async
 def signUp(user_id, firstname, lastname, username, email):
     user = maubay_users(user_id=user_id, firstname=firstname, lastname=lastname, username=username, email=email)

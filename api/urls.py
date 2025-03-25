@@ -6,9 +6,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('api/active/', views.getActiveListings),
-    path('api/deleted/', views.getDeletedListings),
     path('api/sold/', views.getSoldListings),
-    path('api/draft/', views.getDraftListings),
+    path('api/user/active/', views.getUserActive),
+    path('api/user/sold/', views.getUserSold),
+    path('api/user/draft/', views.getUserDraft),
     path('api/listing/add', views.createListing),
     path('api/listing/draft', views.createDraft),
     # path('api/listing/delete', views.deleteListing),
