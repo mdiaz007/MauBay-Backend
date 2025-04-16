@@ -22,6 +22,13 @@ def getSoldListings(request):
     print(serializer)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getListing(request):
+    id = request.GET.get('id')
+    actives = active.objects.filter(id=id)
+    serializer = ActiveListingSerializer(actives, many=True)
+    return Response(serializer.data)
+
 # Dashboard
 @api_view(['GET'])
 def getUserActive(request):

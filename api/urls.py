@@ -12,6 +12,7 @@ urlpatterns = [
     path('api/user/draft/', views.getUserDraft),
     path('api/listing/add', views.createListing),
     path('api/listing/draft', views.createDraft),
+    path('api/listing/get', views.getListing),
     # path('api/listing/delete', views.deleteListing),
     # path('api/listing/sold', views.soldListing)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
